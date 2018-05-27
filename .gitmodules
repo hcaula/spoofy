@@ -1,0 +1,6 @@
+[submodule "api"]
+	path = api
+	url = https://github.com/hcaula/spoofy-api.git
+[submodule "web"]
+	path = web
+	url = https://github.com/hcaula/spoofy-web.git

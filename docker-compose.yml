@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  db:
+    image: "mongo:3.4.13"
+    ports:
+    - "27017:27017"
+    networks:
+      default:
+        aliases:
+          - mongo
+  api:
+    command: "npm run dev"
+    build: ./api
+    ports:
+    - "3000:3000"
+    depends_on:
+    - db
+    volumes:
+      - ./api:/api
+  web:
+    build: ./web
+    command: "npm run dev"
+    ports:
+    - "8080:3000"
+    depends_on:
+    - api
+    volumes:
+      - ./web:/web
+    env_file:
+      - web.development.env
+  
